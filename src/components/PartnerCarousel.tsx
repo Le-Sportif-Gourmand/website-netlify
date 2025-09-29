@@ -5,15 +5,13 @@ import madeInFrance from "@/assets/made-in-france.png";
 
 const PartnerCarousel = () => {
   const partners = [
-    { name: "CTCPA", logo: partnerCtcpa },
-    { name: "BPI France", logo: partnerBpi },
-    { name: "Pépite France", logo: partnerPepite },
-    { name: "Fabriqué en France", logo: madeInFrance },
+    { name: "CTCPA", logo: partnerCtcpa, url: "https://www.ctcpa.org/" },
+    { name: "BPI France", logo: partnerBpi, url: "https://www.bpifrance.fr/" },
+    { name: "Pépite France", logo: partnerPepite, url: "https://www.pepite-france.fr/" },
     // Duplicate for seamless scrolling
-    { name: "CTCPA", logo: partnerCtcpa },
-    { name: "BPI France", logo: partnerBpi },
-    { name: "Pépite France", logo: partnerPepite },
-    { name: "Fabriqué en France", logo: madeInFrance },
+    { name: "CTCPA", logo: partnerCtcpa, url: "https://www.ctcpa.org/" },
+    { name: "BPI France", logo: partnerBpi, url: "https://www.bpifrance.fr/" },
+    { name: "Pépite France", logo: partnerPepite, url: "https://www.pepite-france.fr/" },
   ];
 
   return (
@@ -26,16 +24,19 @@ const PartnerCarousel = () => {
         <div className="relative overflow-hidden">
           <div className="flex animate-scroll">
             {partners.map((partner, index) => (
-              <div
+              <a
                 key={index}
-                className="flex-shrink-0 w-48 mx-8 flex items-center justify-center"
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 w-48 mx-8 flex items-center justify-center hover:scale-105 transition-transform duration-300"
               >
                 <img
                   src={partner.logo}
                   alt={partner.name}
                   className="max-h-16 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
                 />
-              </div>
+              </a>
             ))}
           </div>
         </div>

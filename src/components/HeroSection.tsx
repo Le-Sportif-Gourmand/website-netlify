@@ -52,10 +52,18 @@ const HeroSection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl"
+                onClick={() => window.location.href = '/ou-nous-trouver'}
+              >
                 Découvrir nos points de vente
               </Button>
-              <Button variant="outline" size="lg">
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => window.location.href = '/produits'}
+              >
                 En savoir plus
               </Button>
             </div>
