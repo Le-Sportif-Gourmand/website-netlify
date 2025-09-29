@@ -18,14 +18,18 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-24 items-center justify-between">
           {/* Logo gauche */}
           <div className="flex items-center">
             <a href="/" className="flex items-center space-x-3">
               <img 
                 src={logoGauche} 
                 alt="Le Sportif Gourmand Logo" 
-                className="h-12 w-12"
+                className="h-16 w-16"
+                style={{
+                  mixBlendMode: 'screen',
+                  filter: 'brightness(1.2)'
+                }}
               />
             </a>
           </div>
@@ -36,7 +40,7 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg"
               >
                 {item.name}
               </a>
@@ -48,7 +52,11 @@ const Header = () => {
             <img 
               src={logoDroite} 
               alt="Le Sportif Gourmand" 
-              className="h-8"
+              className="h-10"
+              style={{
+                mixBlendMode: 'screen',
+                filter: 'brightness(1.2)'
+              }}
             />
           </div>
 
@@ -87,7 +95,11 @@ const Header = () => {
                 <img 
                   src={logoDroite} 
                   alt="Le Sportif Gourmand" 
-                  className="h-6 mx-3"
+                  className="h-8 mx-3"
+                  style={{
+                    mixBlendMode: 'screen',
+                    filter: 'brightness(1.2)'
+                  }}
                 />
               </div>
             </div>
