@@ -1,73 +1,90 @@
-# Welcome to your Lovable project
+# Le Sportif Gourmand
 
-## Project info
+Un site web moderne dédié à la nutrition sportive et à l'alimentation saine, construit avec React, TypeScript et Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/33f21813-8f91-4336-af12-3f971f56be6b
+🌐 **Site web**: [https://www.sportifgourmand.com](https://www.sportifgourmand.com)
 
-## How can I edit this code?
+## Prérequis
 
-There are several ways of editing your application.
+- Node.js (v22 ou supérieur recommandé)
+- npm ou yarn
 
-**Use Lovable**
+## Installation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/33f21813-8f91-4336-af12-3f971f56be6b) and start prompting.
+1. Cloner le repository :
+```
+git clone https://github.com/Le-Sportif-Gourmand/website-netlify.git
+cd website-netlify
+```
 
-Changes made via Lovable will be committed automatically to this repo.
+Installer les dépendances :
 
-**Use your preferred IDE**
+```
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Démarrer le serveur de développement :
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+L'application sera accessible sur `http://localhost:8080` (le port peut varier selon votre environnement local).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Stack Technique
 
-**Use GitHub Codespaces**
+- Framework: React 18
+- Langage: TypeScript
+- Build Tool: Vite
+- Styling: Tailwind CSS
+- UI Components: shadcn-ui
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**Scripts Disponibles**
 
-## What technologies are used for this project?
+- `npm run dev` - Démarrer le serveur de développement
 
-This project is built with:
+- `npm run build` - Build de production
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `npm run preview` - Prévisualiser le build de production localement
 
-## How can I deploy this project?
+- `npm run lint` - Exécuter ESLint
 
-Simply open [Lovable](https://lovable.dev/projects/33f21813-8f91-4336-af12-3f971f56be6b) and click on Share -> Publish.
+## Structure du Projet
 
-## Can I connect a custom domain to my Lovable project?
+```
+├── src/
+│   ├── components/     # Composants UI réutilisables
+│   ├── pages/          # Composants de pages
+│   ├── lib/            # Fonctions utilitaires et configurations
+│   └── App.tsx         # Composant principal de l'application
+├── public/             # Assets statiques
+└── package.json        # Dépendances du projet
+```
 
-Yes, you can!
+## Développement
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Standards de Code
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Ce projet utilise ESLint et TypeScript pour assurer la qualité du code. Veuillez vous assurer que votre code passe tous les contrôles avant de commiter.
+
+### Contribution
+
+Créer une branche de fonctionnalité depuis main
+Effectuer vos modifications
+Tester minutieusement en local avant de push sur la main (chaque push sur la branche main coute des credits netlify)
+
+### Déploiement
+
+Le site est automatiquement déployé sur Netlify à chaque push sur la branche principale.
+
+Les builds de production sont générés automatiquement et déployés sur https://www.sportifgourmand.com.
+
+### License
+
+Copyright © 2025 Le Sportif Gourmand. Tous droits réservés.
+
+Ce code source est propriétaire et confidentiel. Toute reproduction, distribution, ou utilisation non autorisée de ce code est strictement interdite sans l'autorisation écrite préalable de Le Sportif Gourmand.
+
+### Contact
+
+Pour toute question ou demande, veuillez nous contacter à : contact@sportifgourmand.com
