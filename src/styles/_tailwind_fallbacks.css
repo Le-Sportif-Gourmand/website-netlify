@@ -1,0 +1,92 @@
+﻿/* --- Fallback utilities (safety net) --- */
+@layer utilities {
+  /* ombre douce */
+  .shadow-soft {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+
+  /* arrondis 16px */
+  .rounded-2xl {
+    border-radius: 16px;
+  }
+
+  /* translate helpers (translate-x-full existait déjà) */
+  .translate-x-0 {
+    --tw-translate-x: 0;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  /* lg:variants fallback (simulate basic lg: behavior at 1024px) */
+  /* default: mobile-first: .lg\:hidden is visible by default (block), then hidden on large screens */
+  .lg\:hidden { display: block !important; }
+  .lg\:flex { display: flex !important; }
+  .lg\:block { display: block !important; }
+
+  @media (min-width: 1024px) {
+    .lg\:hidden { display: none !important; }
+    .lg\:flex { display: flex !important; }
+    .lg\:block { display: block !important; }
+  }
+
+  /* ensure some arbitrary-size classes we used behave */
+  .h-\[64px\] { height: 64px; }
+  .w-\[320px\] { width: 320px; }
+  .w-\[86px\] { width: 86px; }
+
+  /* small accessibility / pointer fallbacks */
+  .pointer-events-none { pointer-events: none; }
+}
+
+/* fallback: translateY -1 */
+.-translate-y-1 { transform: translateY(-0.25rem); }\n
+
+/* --- Fallback : lift (hover / focus) pour les cartes "Pourquoi nous" --- */
+section[aria-label="Pourquoi nous"] article {
+  /* transition identique à ce que tu attends de Tailwind */
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+  transform: translateY(0);
+  /* ensure initial border color transparent so hover border-gold is visible */
+  border-color: transparent;
+  will-change: transform;
+}
+
+section[aria-label="Pourquoi nous"] article:hover,
+section[aria-label="Pourquoi nous"] article:focus,
+section[aria-label="Pourquoi nous"] article:focus-within {
+  transform: translateY(-4px); /* ~ -0.25rem */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-color: #C7A14A;
+  outline: none;
+}
+
+/* accessibilité : focus-visible (pour quand l'utilisateur navigue au clavier) */
+section[aria-label="Pourquoi nous"] article:focus-visible {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-color: #C7A14A;
+  outline: 2px solid rgba(11,74,111,0.18); /* outline primaire doux */
+  outline-offset: 2px;
+}
+
+/* === OVERRIDES PERMANENTS : lift des cartes "Pourquoi nous" ===
+   Priorité forte pour neutraliser les conflits actuels de transform.
+   À retirer quand Tailwind génère correctement hover:-translate-y-1. */
+section[aria-label="Pourquoi nous"] article{
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out !important;
+  transform: translateY(0) !important;
+  border-color: transparent !important;
+  will-change: transform;
+}
+section[aria-label="Pourquoi nous"] article:hover,
+section[aria-label="Pourquoi nous"] article:focus,
+section[aria-label="Pourquoi nous"] article:focus-within{
+  transform: translateY(-4px) !important; /* ≈ -0.25rem */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+  border-color: #C7A14A !important;
+  outline: none !important;
+}
+section[aria-label="Pourquoi nous"] article:focus-visible{
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+  border-color: #C7A14A !important;
+  outline: 2px solid rgba(11,74,111,0.18) !important;
+  outline-offset: 2px !important;
+}

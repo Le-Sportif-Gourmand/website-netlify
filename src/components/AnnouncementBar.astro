@@ -1,0 +1,45 @@
+﻿---
+/* Composant: Barre d’annonce supérieure (36px) */
+---
+<aside id="announcement-bar" role="region" aria-label="Annonce" class="bg-offwhite text-slateish border-b border-slate-200/60">
+  <div class="container-max h-9 relative flex items-center justify-center">
+    <div class="flex items-center gap-2">
+      <!-- Icône cloche 16px -->
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M14 18a2 2 0 1 1-4 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M6 9a6 6 0 1 1 12 0c0 3 1.5 4.5 2 5H4c.5-.5 2-2 2-5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+
+      <p class="text-[13px]">
+        <span class="whitespace-nowrap">Présérie décembre 2025 :</span>
+        <span class="ml-1">réservez votre dégustation B2B</span>
+        <a href="/contact" class="ml-2 underline decoration-transparent hover:decoration-current hover:text-primary focus-visible:outline-primary">Réserver</a>
+      </p>
+    </div>
+
+    <!-- Bouton fermer (hit-area 32px, icône 20px) -->
+    <button type="button" data-close aria-label="Fermer l’annonce"
+            class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-md hover:bg-white focus-visible:outline-primary">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Script léger: persiste la fermeture (localStorage) -->
+  <script is:inline>
+    (function () {
+      try {
+        var KEY = 'lsg_ab_closed_v1';
+        var el = document.getElementById('announcement-bar');
+        if (!el) return;
+        if (localStorage.getItem(KEY) === '1') { el.style.display = 'none'; return; }
+        var btn = el.querySelector('[data-close]');
+        if (btn) btn.addEventListener('click', function () {
+          localStorage.setItem(KEY, '1');
+          el.style.display = 'none';
+        });
+      } catch (e) {}
+    })();
+  </script>
+</aside>

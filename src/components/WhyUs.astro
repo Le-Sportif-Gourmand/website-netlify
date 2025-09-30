@@ -1,0 +1,85 @@
+﻿---
+/* WhyUs.astro — la carte hover passe AU-DESSUS (z-index élevé), liseré or fin, écart vertical confortable */
+---
+<section class="bg-offwhite py-20" role="region" aria-label="Pourquoi nous">
+  <div class="container-max">
+    <header class="mb-10">
+      <h2 class="text-3xl md:text-[36px] font-extrabold font-display text-ink">
+        Conçu pour les contraintes des salles de sport
+      </h2>
+    </header>
+
+    <!-- Espace vertical augmenté pour éviter les collisions visuelles -->
+    <div class="why-grid grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-12">
+      <article tabindex="0" class="why-card bg-white rounded-2xl shadow-[0_6px_18px_rgba(0,0,0,0.04)] p-6 border" aria-labelledby="why-1-title">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M6 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 id="why-1-title" class="text-lg font-semibold text-ink">Facile à opérer</h3>
+        </div>
+        <p class="mt-4 text-[15px] text-slateish leading-relaxed">
+          Surgelé → décongélation 4–6 h → vente. Sans transformation ni perte de qualité; idéal pour une mise en rayon rapide.
+        </p>
+      </article>
+
+      <article tabindex="0" class="why-card bg-white rounded-2xl shadow-[0_6px_18px_rgba(0,0,0,0.04)] p-6 border" aria-labelledby="why-2-title">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 14v2a4 4 0 004 4h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 11l3-3 3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 id="why-2-title" class="text-lg font-semibold text-ink">Santé & performance</h3>
+        </div>
+        <p class="mt-4 text-[15px] text-slateish leading-relaxed">
+          20 g protéines / portion, ≤ 250 kcal par portion — un profil nutritionnel pensé pour l’entraînement.
+        </p>
+      </article>
+
+      <article tabindex="0" class="why-card bg-white rounded-2xl shadow-[0_6px_18px_rgba(0,0,0,0.04)] p-6 border" aria-labelledby="why-3-title">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 12a4 4 0 00-4-4H7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 8v8M17 16H9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 id="why-3-title" class="text-lg font-semibold text-ink">Rentable & prévisible</h3>
+        </div>
+        <p class="mt-4 text-[15px] text-slateish leading-relaxed">
+          Bloc 1,5 kg pré-découpé : portions régulières, food-cost maîtrisé — marge et prévisibilité pour vos achats pro.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <style>
+    /* Contexte d'empilement clair pour tout le groupe */
+    .why-grid{ isolation:isolate; }
+
+    /* Carte : base */
+    .why-card{
+      position: relative;                 /* nécessaire pour z-index */
+      z-index: 0;                         /* base */
+      background-color:#fff;              /* pas de transparence */
+      border-color: transparent;          /* liseré caché par défaut */
+      border-radius: 1rem;                /* ~ rounded-2xl */
+      transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+      transform: translateY(0);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    /* Hover/focus : la carte MONTE et PASSE AU-DESSUS des autres */
+    .why-card:hover,
+    .why-card:focus,
+    .why-card:focus-within{
+      z-index: 50;                        /* ← au-dessus des voisines */
+      transform: translateY(-2px);        /* lift léger */
+      border-color: #C7A14A;              /* liseré or fin */
+      box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+      outline: none;
+      background-color:#fff;              /* reste opaque */
+    }
+
+    .why-card:focus-visible{
+      outline: 2px solid rgba(11,74,111,0.18);
+      outline-offset: 2px;
+    }
+  </style>
+</section>

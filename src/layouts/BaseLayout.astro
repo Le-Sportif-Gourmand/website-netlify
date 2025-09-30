@@ -1,0 +1,51 @@
+﻿---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = "Le Sportif Gourmand", description = "Pâtisseries protéinées — B2B" } = Astro.props;
+import "../styles/global.css";
+import AnnouncementBar from "../components/AnnouncementBar.astro";
+import Header from "../components/Header.astro";
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Google Fonts: Inter (texte), Montserrat (titres) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#FAF7F2]">
+    <!-- Barre d’annonce -->
+    <AnnouncementBar />
+
+    <!-- Header -->
+    <Header />
+
+    <!-- Main slot -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t">
+      <div class="container-max py-6 text-sm text-slate-600 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>© {new Date().getFullYear()} Le Sportif Gourmand</div>
+        <div class="flex gap-4">
+          <a href="/mentions" class="hover:underline">Mentions légales</a>
+          <a href="/politique-confidentialite" class="hover:underline">Confidentialité</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

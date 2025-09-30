@@ -1,0 +1,12 @@
+﻿@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans text-[15px] md:text-[16px] text-slateish leading-relaxed bg-white; }
+  h1,h2,h3,h4,h5,h6 { @apply font-display text-ink tracking-tight; }
+  a { @apply underline-offset-2; }
+  :focus-visible { @apply outline-none ring-2 ring-primary/60 ring-offset-2; }
+}
+
+@layer components {
+  /* Conteneur conforme au brief: max 1200px + paddings responsives */
+  .container-max { @apply max-w-container mx-auto px-4 sm:px-6 lg:px-8; }
+}

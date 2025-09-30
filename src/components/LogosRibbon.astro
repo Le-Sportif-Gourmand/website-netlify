@@ -1,0 +1,117 @@
+﻿---
+import badgeConfiance from "../assets/Confiance.png";
+---
+
+<section
+  role="region"
+  aria-label="Ils nous font confiance"
+  class="bg-white px-[30px] py-[30px] mt-[80px] md:mt-[144px] mb-[80px] md:mb-[144px]"
+>
+  <div
+    class="container-max flex items-center h-[140px] md:h-[160px]
+           pl-[20px] pr-[20px] md:pl-[70px] md:pr-[70px]"
+  >
+    <!-- Badge image + écart 20px avant le ruban -->
+    <div class="flex-shrink-0 self-center pr-[20px]">
+      <img
+        src={badgeConfiance.src}
+        alt="Ils nous font confiance"
+        class="block h-[62px] md:h-[78px] w-auto select-none pointer-events-none shadow-[0_3px_12px_rgba(0,0,0,0.06)] my-auto"
+        loading="lazy" decoding="async" draggable="false"
+      />
+    </div>
+
+    <!-- Zone carrousel -->
+    <div class="flex-1 overflow-hidden relative">
+      <!-- track : on duplique les logos pour un scroll en boucle fluide -->
+      <div class="logos-track will-change-transform" aria-hidden="false">
+        <div class="logos flex items-center !gap-[20px]">
+          <!-- Logos réels -->
+          <img
+            src="src/assets/Logo BPI France.png"
+            alt="Bpifrance"
+            class="block h-[84px] md:h-[96px] w-auto object-contain select-none pointer-events-none opacity-90"
+            loading="lazy" decoding="async"
+          />
+          <img
+            src="src/assets/Pépite France.png"
+            alt="Pépite France"
+            class="block h-[84px] md:h-[96px] w-auto object-contain select-none pointer-events-none opacity-90"
+            loading="lazy" decoding="async"
+          />
+          <img
+            src="src/assets/CTCPA.png"
+            alt="CTCPA"
+            class="block h-[84px] md:h-[96px] w-auto object-contain select-none pointer-events-none opacity-90"
+            loading="lazy" decoding="async"
+          />
+
+          <!-- placeholders (remplacer petit à petit) -->
+          <svg viewBox="0 0 110 48" aria-hidden="true"
+               class="h-[84px] md:h-[96px] w-auto opacity-70 text-[#0B4A6F]">
+            <rect width="110" height="48" rx="6" fill="currentColor"/>
+          </svg>
+          <svg viewBox="0 0 110 48" aria-hidden="true"
+               class="h-[84px] md:h-[96px] w-auto opacity-70 text-[#0B4A6F]">
+            <rect width="110" height="48" rx="6" fill="currentColor"/>
+          </svg>
+          <svg viewBox="0 0 110 48" aria-hidden="true"
+               class="h-[84px] md:h-[96px] w-auto opacity-70 text-[#0B4A6F]">
+            <rect width="110" height="48" rx="6" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <!-- duplicate (même séquence pour une boucle parfaite) -->
+        <div class="logos flex items-center !gap-[20px]" aria-hidden="true">
+          <img
+            src="src/assets/Logo BPI France.png"
+            alt="Bpifrance"
+            class="block h-[84px] md:h-[96px] w-auto object-contain select-none pointer-events-none opacity-90"
+            loading="lazy" decoding="async"
+          />
+          <img
+            src="src/assets/Pépite France.png"
+            alt="Pépite France"
+            class="block h-[84px] md:h-[96px] w-auto object-contain select-none pointer-events-none opacity-90"
+            loading="lazy" decoding="async"
+          />
+          <img
+            src="src/assets/CTCPA.png"
+            alt="CTCPA"
+            class="block h-[84px] md:h-[96px] w-auto object-contain select-none pointer-events-none opacity-90"
+            loading="lazy" decoding="async"
+          />
+          <svg viewBox="0 0 110 48" aria-hidden="true"
+               class="h-[84px] md:h-[96px] w-auto opacity-70 text-[#0B4A6F]">
+            <rect width="110" height="48" rx="6" fill="currentColor"/>
+          </svg>
+          <svg viewBox="0 0 110 48" aria-hidden="true"
+               class="h-[84px] md:h-[96px] w-auto opacity-70 text-[#0B4A6F]">
+            <rect width="110" height="48" rx="6" fill="currentColor"/>
+          </svg>
+          <svg viewBox="0 0 110 48" aria-hidden="true"
+               class="h-[84px] md:h-[96px] w-auto opacity-70 text-[#0B4A6F]">
+            <rect width="110" height="48" rx="6" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- style encapsulé : animation, pause au hover/focus, reduced-motion respecté -->
+  <style is:inline>
+    /* Animation du ruban (les deux groupes bougent ensemble) */
+    .logos-track{display:flex; animation: logos-marquee linear 28s infinite;}
+    .logos-track:hover,.logos-track:focus-within{animation-play-state:paused; cursor:pointer;}
+
+    @keyframes logos-marquee{
+      0%{transform:translateX(0)}
+      100%{transform:translateX(-50%)} /* le duplicate assure la boucle continue */
+    }
+
+    /* Accessibilité : respecte prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce){
+      .logos-track{animation:none !important;}
+    }
+  </style>
+</section>

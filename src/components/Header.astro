@@ -1,0 +1,209 @@
+﻿---
+/* Header — nav : espacement augmenté et texte 50% plus grand */
+import LogoGauche from "../assets/LogoGauche.png";
+import LogoDroite from "../assets/LogoDroite.png";
+
+const pathname = Astro.url.pathname;
+
+const NAV = [
+  { href: "/produits", label: "PRODUITS" },
+  { href: "/partenaires", label: "PARTENAIRES" },
+  { href: "/histoire", label: "HISTOIRE" },
+  { href: "/contact", label: "CONTACT" },
+];
+
+const isActive = (href) => {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
+};
+---
+
+<header
+  id="site-header"
+  class="sticky top-0 z-50 border-b transition-shadow"
+  style="background-color: #000000;"
+>
+  <div class="container-max relative flex items-center justify-between h-[128px] md:h-[144px]">
+    <!-- Logo gauche -->
+    <a href="/" class="inline-flex items-center shrink-0" aria-label="Accueil — Le Sportif Gourmand (icone)">
+      <span class="logo-left-frame rounded-md overflow-hidden" aria-hidden="false">
+        <img
+          src={LogoGauche.src}
+          width={LogoGauche.width}
+          height={LogoGauche.height}
+          alt="Logo icône — Le Sportif Gourmand"
+          class="logo-left-image"
+          loading="eager"
+          decoding="async"
+        />
+      </span>
+    </a>
+
+    <!-- NAV (visible en permanence, centrée) -->
+    <nav
+      class="flex flex-1 justify-center items-center nav-centered"
+      aria-label="Navigation principale"
+      role="navigation"
+    >
+      {NAV.map((item) => {
+        const active = isActive(item.href);
+        return (
+          <a
+            href={item.href}
+            aria-current={active ? "page" : undefined}
+            class={`nav-link ${active ? "nav-link--active" : ""}`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- DROITE : actions + logo (logo droite masqué sur mobile) -->
+    <div class="flex items-center gap-4">
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="/devis" class="primary-cta" role="button">Demander un devis</a>
+      </div>
+
+      <a href="/" class="inline-flex items-center shrink-0 logo-right-anchor" aria-label="Le Sportif Gourmand (texte)">
+        <span class="logo-right-frame rounded-md" aria-hidden="false">
+          <img
+            src={LogoDroite.src}
+            width={LogoDroite.width}
+            height={LogoDroite.height}
+            alt="Le Sportif Gourmand"
+            class="logo-right-image"
+            loading="eager"
+            decoding="async"
+          />
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var header = document.getElementById('site-header');
+      function onScroll() {
+        var y = window.scrollY || document.documentElement.scrollTop || 0;
+        if (y > 2) header.classList.add('shadow-soft');
+        else header.classList.remove('shadow-soft');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+  <style>
+    :root {
+      --nav-gold: #CFA147;
+      --nav-font: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+
+    /* garde le conteneur visible pour logos dépassant */
+    .container-max { overflow: visible; }
+    .container-max{max-width:1200px;margin-inline:auto;padding-inline:1rem;}
+    .text-slateish{color:#475569;} /* proche de slate-600 */
+
+
+
+    /* Logo gauche (petit nudge / remontée déjà validée) */
+    .logo-left-frame {
+      display: block;
+      width: calc(128px * 0.792);
+      height: calc(128px * 0.792);
+      overflow: hidden;
+      transform: translate(-120px, -2px);
+    }
+    .logo-left-image { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
+
+    /* NAV container : gap augmenté (espace entre items) */
+    .nav-centered {
+      gap: 2rem;              /* ~32px entre onglets, espace visible */
+      z-index: 120;           /* au-dessus du logo droit */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+    }
+
+    /* NAV link : police agrandie de 50% (15px -> 22.5px), plus d'espace entre lettres */
+    .nav-link {
+      font-family: var(--nav-font);
+      font-weight: 700;           /* plus visible avec la taille */
+      font-size: 22.5px;          /* 15px * 1.5 */
+      line-height: 1;
+      letter-spacing: 0.06em;     /* écarte visuellement les lettres */
+      color: var(--nav-gold);
+      text-decoration: none;
+      padding: 8px 8px;           /* hit-area confortable */
+      border-radius: 6px;
+      transition: color 150ms ease, transform 150ms ease;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;        /* évite retour à la ligne entre mots dans un item */
+    }
+
+    /* Indicateur plus discret et proportionnel à la nouvelle taille */
+    .nav-link--active {
+      box-shadow: inset 0 -3px 0 0 var(--nav-gold); /* 3px underline doré */
+    }
+
+    .nav-link:hover, .nav-link:focus {
+      color: #FFFFFF;
+      transform: translateY(-3px);
+      outline: none;
+    }
+    .nav-link:focus-visible {
+      outline: 3px solid rgba(255,255,255,0.12);
+      outline-offset: 4px;
+    }
+
+    /* Logo droite */
+    .logo-right-frame {
+      display: block;
+      width: calc(144px * 1.62);
+      height: calc(144px * 1.62);
+      overflow: visible;
+      transform: translate(120px, 5px);
+      z-index: 90;
+    }
+    .logo-right-image { width:100%; height:100%; object-fit:contain; object-position:right center; display:block; }
+
+    /* CTA maintenu inchangé */
+    .primary-cta {
+      display: inline-flex;
+      align-items: center;
+      height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: #0B4A6F;
+      color: #ffffff;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(11,74,111,0.12);
+      transition: box-shadow 160ms ease, transform 160ms ease;
+    }
+    .primary-cta:hover { box-shadow: 0 12px 30px rgba(11,74,111,0.16); transform: translateY(-2px); }
+    .primary-cta:focus { outline: 3px solid rgba(255,255,255,0.12); outline-offset: 2px; }
+
+    /* Responsive : évite que la nav déborde sur petits écrans */
+    @media (max-width: 1023px) {
+      .logo-right-anchor, .logo-right-frame { display: none !important; }
+      .hidden.lg\:flex { display: none !important; }
+      /* réduis taille & gap pour garder lisibilité */
+      .nav-centered { gap: 1rem; }
+      .nav-link { font-size: 18px; letter-spacing: 0.04em; padding: 6px 6px; }
+    }
+
+    /* Sur écrans très étroits, on fait retomber la nav en deux lignes si besoin plutôt que la couper */
+    @media (max-width: 680px) {
+      .nav-centered { flex-wrap: wrap; gap: 0.75rem; }
+      .nav-link { font-size: 16px; }
+    }
+
+    /* Focus visible par défaut */
+    a:focus-visible { outline: 3px solid rgba(255,255,255,0.12); outline-offset: 3px; }
+  </style>
+</header>
