@@ -4,8 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import flanProduct from "@/assets/flan-product.png";
 import madeInFrance from "@/assets/made-in-france.png";
+import { products } from "@/data/products";
 
 const Produits = () => {
+  const product = products[0]; // Premier produit
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -26,24 +29,24 @@ const Produits = () => {
               <Badge variant="outline" className="mb-4 border-primary text-primary">
                 Produit phare
               </Badge>
-              <h2 className="text-3xl font-bold mb-6">Flan Pâtissier Protéiné</h2>
+              <h2 className="text-3xl font-bold mb-6">{product.name}</h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 Notre flan pâtissier révolutionnaire combine la tradition française de la pâtisserie 
-                avec les besoins nutritionnels des sportifs modernes. Chaque portion contient 20g de 
-                protéines de haute qualité pour seulement 250 calories.
+                avec les besoins nutritionnels des sportifs modernes. Chaque portion contient {product.nutritionalInfo.proteins}g de 
+                protéines de haute qualité pour seulement {product.nutritionalInfo.calories} calories.
               </p>
 
               {/* Caractéristiques nutritionnelles */}
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <Card>
                   <CardContent className="p-4 text-center">
-                    <div className="text-2xl font-bold text-primary mb-1">20g</div>
+                    <div className="text-2xl font-bold text-primary mb-1">{product.nutritionalInfo.proteins}g</div>
                     <div className="text-sm text-muted-foreground">Protéines</div>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardContent className="p-4 text-center">
-                    <div className="text-2xl font-bold text-primary mb-1">250</div>
+                    <div className="text-2xl font-bold text-primary mb-1">{product.nutritionalInfo.calories}</div>
                     <div className="text-sm text-muted-foreground">Calories</div>
                   </CardContent>
                 </Card>
@@ -71,7 +74,7 @@ const Produits = () => {
               <div className="relative">
                 <img 
                   src={flanProduct} 
-                  alt="Flan Pâtissier Protéiné" 
+                  alt={product.name} 
                   className="w-96 h-96 object-contain drop-shadow-2xl animate-float"
                 />
                 <div 
@@ -95,35 +98,35 @@ const Produits = () => {
                   <p className="text-xs text-muted-foreground mb-3">Pour 100g</p>
                   <div className="flex justify-between border-b pb-2">
                     <span>Énergie</span>
-                    <span className="font-semibold">200 kcal</span>
+                    <span className="font-semibold">{product.detailedNutrition.per100g.energy}</span>
                   </div>
                   <div className="flex justify-between border-b pb-2">
                     <span>Protéines</span>
-                    <span className="font-semibold text-primary">16g</span>
+                    <span className="font-semibold text-primary">{product.detailedNutrition.per100g.proteins}</span>
                   </div>
                   <div className="flex justify-between border-b pb-2">
                     <span>Glucides</span>
-                    <span className="font-semibold">22g</span>
+                    <span className="font-semibold">{product.detailedNutrition.per100g.carbs}</span>
                   </div>
                   <div className="flex justify-between border-b pb-2 pl-4">
                     <span className="text-xs">dont sucres</span>
-                    <span className="text-xs">18g</span>
+                    <span className="text-xs">{product.detailedNutrition.per100g.sugars}</span>
                   </div>
                   <div className="flex justify-between border-b pb-2">
                     <span>Lipides</span>
-                    <span className="font-semibold">4g</span>
+                    <span className="font-semibold">{product.detailedNutrition.per100g.fat}</span>
                   </div>
                   <div className="flex justify-between border-b pb-2 pl-4">
                     <span className="text-xs">dont saturés</span>
-                    <span className="text-xs">2g</span>
+                    <span className="text-xs">{product.detailedNutrition.per100g.saturatedFat}</span>
                   </div>
                   <div className="flex justify-between border-b pb-2">
                     <span>Fibres</span>
-                    <span className="font-semibold">1g</span>
+                    <span className="font-semibold">{product.detailedNutrition.per100g.fiber}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Sel</span>
-                    <span className="font-semibold">0.2g</span>
+                    <span className="font-semibold">{product.detailedNutrition.per100g.salt}</span>
                   </div>
                 </div>
               </CardContent>
@@ -135,12 +138,9 @@ const Produits = () => {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm">
-                  <li>• Lait de vache français</li>
-                  <li>• Œufs fermiers</li>
-                  <li>• Protéines de lactosérum</li>
-                  <li>• Sucre de canne</li>
-                  <li>• Vanille naturelle</li>
-                  <li>• Caramel artisanal</li>
+                  {product.ingredients.map((ingredient, index) => (
+                    <li key={index}>• {ingredient}</li>
+                  ))}
                 </ul>
               </CardContent>
             </Card>
@@ -150,10 +150,10 @@ const Produits = () => {
                 <CardTitle className="text-center">Conservation</CardTitle>
               </CardHeader>
               <CardContent className="text-sm space-y-2">
-                <p><strong>Température :</strong> Entre 2°C et 4°C</p>
-                <p><strong>Durée :</strong> 7 jours après ouverture</p>
-                <p><strong>Conditionnement :</strong> Pot individuel recyclable</p>
-                <p><strong>Format :</strong> 125g par portion</p>
+                <p><strong>Température :</strong> {product.conservation.temperature}</p>
+                <p><strong>Durée :</strong> {product.conservation.duration}</p>
+                <p><strong>Conditionnement :</strong> {product.conservation.packaging}</p>
+                <p><strong>Format :</strong> {product.conservation.format}</p>
               </CardContent>
             </Card>
 
@@ -164,10 +164,9 @@ const Produits = () => {
               <CardContent className="text-sm space-y-2">
                 <p><strong>Idéal pour :</strong></p>
                 <ul className="space-y-1 mt-2">
-                  <li>• Collation post-entraînement</li>
-                  <li>• Petit-déjeuner protéiné</li>
-                  <li>• Dessert healthy</li>
-                  <li>• En-cas gourmand</li>
+                  {product.usage.map((use, index) => (
+                    <li key={index}>• {use}</li>
+                  ))}
                 </ul>
               </CardContent>
             </Card>

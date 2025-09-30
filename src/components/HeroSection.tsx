@@ -1,9 +1,11 @@
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import flanProduct from "@/assets/flan-product.png";
-import banniereDebris from "@/assets/banniere-flan.png";
+import banniereFlan from "@/assets/banniere-flan.png";
+import { getFeaturedProduct } from "@/data/products";
 
 const HeroSection = () => {
+  const product = getFeaturedProduct();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
@@ -25,30 +27,34 @@ const HeroSection = () => {
             </Badge>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Le Flan Pâtissier
-              <span className="block text-primary">Protéiné</span>
+              {product.tagline.split(' ').slice(0, -1).join(' ')}
+              <span className="block text-primary">{product.tagline.split(' ').slice(-1)}</span>
             </h1>
             
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              La première pâtisserie qui allie plaisir gourmand et performance sportive. 
-              <strong className="text-primary"> 20g de protéines</strong> par portion, 
-              <strong className="text-primary"> 250 kcal</strong> seulement.
+              {product.description} 
+              <strong className="text-primary"> {product.nutritionalInfo.proteins}g de protéines</strong> par portion, 
+              <strong className="text-primary"> {product.nutritionalInfo.calories} kcal</strong> seulement.
             </p>
 
             {/* Badges produit */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
               <Badge className="bg-primary text-primary-foreground">
-                20g de protéines
+                {product.nutritionalInfo.proteins}g de protéines
               </Badge>
               <Badge variant="secondary">
-                250 kcal
+                {product.nutritionalInfo.calories} kcal
               </Badge>
-              <Badge variant="outline">
-                Aucun additif controversé
-              </Badge>
-              <Badge variant="outline" className="border-accent text-accent">
-                Fabriqué en France
-              </Badge>
+              {product.nutritionalInfo.noControversialAdditives && (
+                <Badge variant="outline">
+                  Aucun additif controversé
+                </Badge>
+              )}
+              {product.nutritionalInfo.madeInFrance && (
+                <Badge variant="outline" className="border-accent text-accent">
+                  Fabriqué en France
+                </Badge>
+              )}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -69,30 +75,18 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Image produit */}
+          {/* Image bannière */}
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative animate-float">
-              {/* Image de marketing comme background décoratif */}
-              <div className="absolute -inset-10 opacity-20">
-                <img 
-                  src={banniereDebris} 
-                  alt="" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              
-              {/* Image produit principale */}
-              <div className="relative z-10">
-                <img 
-                  src={flanProduct} 
-                  alt="Flan Pâtissier Protéiné" 
-                  className="w-80 h-80 object-contain drop-shadow-2xl"
-                />
-              </div>
+              <img 
+                src={banniereFlan} 
+                alt={product.name} 
+                className="w-full max-w-2xl h-auto object-contain drop-shadow-2xl"
+              />
               
               {/* Effet de glow doré */}
               <div 
-                className="absolute inset-0 rounded-full opacity-30 blur-xl"
+                className="absolute inset-0 opacity-20 blur-xl"
                 style={{
                   background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)"
                 }}
