@@ -85,7 +85,50 @@ const Produits = () => {
           </div>
 
           {/* Informations détaillées */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-center">Valeurs nutritionnelles</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-sm space-y-2">
+                  <p className="text-xs text-muted-foreground mb-3">Pour 100g</p>
+                  <div className="flex justify-between border-b pb-2">
+                    <span>Énergie</span>
+                    <span className="font-semibold">200 kcal</span>
+                  </div>
+                  <div className="flex justify-between border-b pb-2">
+                    <span>Protéines</span>
+                    <span className="font-semibold text-primary">16g</span>
+                  </div>
+                  <div className="flex justify-between border-b pb-2">
+                    <span>Glucides</span>
+                    <span className="font-semibold">22g</span>
+                  </div>
+                  <div className="flex justify-between border-b pb-2 pl-4">
+                    <span className="text-xs">dont sucres</span>
+                    <span className="text-xs">18g</span>
+                  </div>
+                  <div className="flex justify-between border-b pb-2">
+                    <span>Lipides</span>
+                    <span className="font-semibold">4g</span>
+                  </div>
+                  <div className="flex justify-between border-b pb-2 pl-4">
+                    <span className="text-xs">dont saturés</span>
+                    <span className="text-xs">2g</span>
+                  </div>
+                  <div className="flex justify-between border-b pb-2">
+                    <span>Fibres</span>
+                    <span className="font-semibold">1g</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Sel</span>
+                    <span className="font-semibold">0.2g</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             <Card>
               <CardHeader>
                 <CardTitle className="text-center">Ingrédients</CardTitle>
