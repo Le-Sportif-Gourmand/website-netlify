@@ -192,11 +192,11 @@ const OuNousTrouver = () => {
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-muted-foreground mb-4">
-                  Nos produits sont également disponibles en livraison dans certaines zones. 
-                  Consultez notre service client pour connaître la disponibilité près de chez vous.
+                  La livraison à domicile n'est pas encore disponible. 
+                  Contactez-nous pour nous faire part de votre intérêt !
                 </p>
                 <Button variant="outline">
-                  Zones de livraison
+                  Manifester votre intérêt
                 </Button>
               </CardContent>
             </Card>

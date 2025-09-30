@@ -93,7 +93,7 @@ const Histoire = () => {
             <h2 className="text-3xl font-bold text-center mb-12">Nos Valeurs</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="text-5xl mb-4">🇫🇷</div>
+                <div className="text-5xl mb-4">🥐</div>
                 <h3 className="text-xl font-semibold mb-3">Tradition Française</h3>
                 <p className="text-muted-foreground">
                   Nous respectons et perpétuons l'excellence de la pâtisserie française, 

@@ -90,7 +90,7 @@ const Footer = () => {
 
         <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-secondary-foreground/60 text-sm">
-            © 2024 Le Sportif Gourmand. Tous droits réservés.
+            © 2025 Le Sportif Gourmand. Tous droits réservés.
           </p>
         </div>
       </div>

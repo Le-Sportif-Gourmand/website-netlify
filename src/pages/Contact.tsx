@@ -204,8 +204,8 @@ const Contact = () => {
                 <CardContent className="p-6">
                   <h3 className="font-semibold mb-2">Livrez-vous à domicile ?</h3>
                   <p className="text-sm text-muted-foreground">
-                    Nous livrons dans certaines zones. Contactez-nous pour vérifier 
-                    la disponibilité dans votre région.
+                    Actuellement, nous ne proposons pas de livraison à domicile. 
+                    Faites-nous savoir si cela vous intéresse !
                   </p>
                 </CardContent>
               </Card>

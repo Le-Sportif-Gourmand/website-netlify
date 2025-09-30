@@ -16,7 +16,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-secondary/95 backdrop-blur supports-[backdrop-filter]:bg-secondary/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-24 items-center justify-between">
           {/* Logo gauche */}
@@ -80,7 +80,7 @@ const Header = () => {
         {/* Menu mobile ouvert */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t bg-background">
+            <div className="px-2 pt-2 pb-3 space-y-1 border-t bg-secondary">
               {navigation.map((item) => (
                 <a
                   key={item.name}
