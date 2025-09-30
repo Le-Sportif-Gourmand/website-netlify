@@ -69,13 +69,13 @@ Ce projet utilise ESLint et TypeScript pour assurer la qualité du code. Veuille
 
 ### Contribution
 
-Créer une branche de fonctionnalité depuis main
-Effectuer vos modifications
-Tester minutieusement en local avant de push sur la main (chaque push sur la branche main coute des credits netlify)
+1. Créer une branche de fonctionnalité depuis main
+2. Effectuer vos modifications
+3. Tester minutieusement en local avant de push sur la main (chaque push sur la branche main coute des credits netlify)
 
 ### Déploiement
 
-Le site est automatiquement déployé sur Netlify à chaque push sur la branche principale.
+**Le site est automatiquement déployé sur Netlify à chaque push sur la branche principale.**
 
 Les builds de production sont générés automatiquement et déployés sur https://www.sportifgourmand.com.
 
