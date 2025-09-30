@@ -25,7 +25,7 @@ const Header = () => {
               <img 
                 src={logoGauche} 
                 alt="Le Sportif Gourmand Logo" 
-                className="h-16 w-16"
+                className="h-12"
                 style={{
                   mixBlendMode: 'screen',
                   filter: 'brightness(1.2)'
@@ -52,7 +52,7 @@ const Header = () => {
             <img 
               src={logoDroite} 
               alt="Le Sportif Gourmand" 
-              className="h-10"
+              className="h-16 w-16"
               style={{
                 mixBlendMode: 'screen',
                 filter: 'brightness(1.2)'
