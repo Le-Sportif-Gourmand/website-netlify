@@ -1,11 +1,15 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Map from "@/components/Map";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Phone, ExternalLink } from "lucide-react";
 
 const OuNousTrouver = () => {
+  const [mapApiKey, setMapApiKey] = useState("");
+  const [showMap, setShowMap] = useState(false);
+
   // Points de vente fictifs pour la démo
   const salesPoints = [
     {
@@ -46,6 +50,14 @@ const OuNousTrouver = () => {
     }
   ];
 
+  const handleShowMap = () => {
+    if (mapApiKey.trim()) {
+      setShowMap(true);
+    } else {
+      alert("Veuillez entrer votre clé API Google Maps");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -61,12 +73,59 @@ const OuNousTrouver = () => {
             </p>
           </div>
 
-          {/* Carte interactive OpenStreetMap */}
-          <Card className="mb-8">
-            <CardContent className="p-4">
-              <Map salesPoints={salesPoints} />
-            </CardContent>
-          </Card>
+          {/* Configuration de la carte */}
+          {!showMap && (
+            <Card className="mb-8 border-primary/20">
+              <CardHeader>
+                <CardTitle className="text-center">Afficher la carte interactive</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-center text-muted-foreground">
+                  Pour afficher la carte interactive avec tous nos points de vente, 
+                  veuillez entrer votre clé API Google Maps :
+                </p>
+                <div className="flex gap-4 max-w-md mx-auto">
+                  <Input
+                    type="text"
+                    placeholder="Clé API Google Maps"
+                    value={mapApiKey}
+                    onChange={(e) => setMapApiKey(e.target.value)}
+                  />
+                  <Button onClick={handleShowMap}>
+                    Afficher
+                  </Button>
+                </div>
+                <p className="text-xs text-muted-foreground text-center">
+                  Obtenez votre clé API sur{" "}
+                  <a 
+                    href="https://console.cloud.google.com/apis/credentials" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Google Cloud Console
+                  </a>
+                </p>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Carte interactive (placeholder) */}
+          {showMap && (
+            <Card className="mb-8">
+              <CardContent className="p-0">
+                <div className="h-96 bg-muted rounded-lg flex items-center justify-center">
+                  <div className="text-center">
+                    <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
+                    <p className="text-lg font-semibold">Carte Google Maps</p>
+                    <p className="text-muted-foreground">
+                      Ici s'afficherait la carte interactive avec les {salesPoints.length} points de vente
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Liste des points de vente */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
