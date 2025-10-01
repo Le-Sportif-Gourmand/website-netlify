@@ -13,7 +13,7 @@ const Footer = () => {
               <img 
                 src={logoGauche} 
                 alt="Le Sportif Gourmand" 
-                className="h-10 w-10"
+                className="h-16 w-auto"
               />
               <h3 className="text-xl font-bold">Le Sportif Gourmand</h3>
             </div>

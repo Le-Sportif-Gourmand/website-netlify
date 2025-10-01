@@ -71,14 +71,14 @@ const Produits = () => {
             </div>
 
             <div className="order-1 lg:order-2 flex justify-center">
-              <div className="relative">
+              <div className="relative bg-card/30 backdrop-blur-sm p-12 rounded-3xl border border-primary/20">
                 <img 
                   src={flanProduct} 
                   alt={product.name} 
-                  className="w-96 h-96 object-contain drop-shadow-2xl animate-float"
+                  className="w-[500px] h-[500px] object-contain drop-shadow-2xl animate-float"
                 />
                 <div 
-                  className="absolute inset-0 rounded-full opacity-20 blur-xl"
+                  className="absolute inset-0 rounded-3xl opacity-20 blur-xl"
                   style={{
                     background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)"
                   }}
