@@ -3,7 +3,7 @@ import logoGauche from "@/assets/logo-gauche.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground">
+    <footer className="bg-background text-foreground border-t border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
@@ -17,7 +17,7 @@ const Footer = () => {
               />
               <h3 className="text-xl font-bold">Le Sportif Gourmand</h3>
             </div>
-            <p className="text-secondary-foreground/80 mb-6 leading-relaxed">
+            <p className="text-muted-foreground mb-6 leading-relaxed">
               Révolutionnons la pâtisserie avec des créations gourmandes et protéinées, 
               parfaites pour allier plaisir et performance sportive.
             </p>
@@ -26,7 +26,7 @@ const Footer = () => {
                 href="https://www.instagram.com/le_sportif_gourmand/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-secondary-foreground/60 hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Instagram"
               >
                 <span className="sr-only">Instagram</span>
@@ -38,7 +38,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/le-sportif-gourmand" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-secondary-foreground/60 hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="LinkedIn"
               >
                 <span className="sr-only">LinkedIn</span>
@@ -53,11 +53,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Navigation</h4>
             <ul className="space-y-2">
-              <li><a href="/produits" className="text-secondary-foreground/80 hover:text-primary transition-colors">Produits</a></li>
-              <li><a href="/partenaires" className="text-secondary-foreground/80 hover:text-primary transition-colors">Partenaires</a></li>
-              <li><a href="/histoire" className="text-secondary-foreground/80 hover:text-primary transition-colors">Histoire</a></li>
-              <li><a href="/ou-nous-trouver" className="text-secondary-foreground/80 hover:text-primary transition-colors">Où nous trouver</a></li>
-              <li><a href="/contact" className="text-secondary-foreground/80 hover:text-primary transition-colors">Contact</a></li>
+              <li><a href="/produits" className="text-muted-foreground hover:text-primary transition-colors">Produits</a></li>
+              <li><a href="/partenaires" className="text-muted-foreground hover:text-primary transition-colors">Partenaires</a></li>
+              <li><a href="/histoire" className="text-muted-foreground hover:text-primary transition-colors">Histoire</a></li>
+              <li><a href="/ou-nous-trouver" className="text-muted-foreground hover:text-primary transition-colors">Où nous trouver</a></li>
+              <li><a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a></li>
             </ul>
           </div>
 
@@ -67,20 +67,20 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-secondary-foreground/80 text-sm">
+                <span className="text-muted-foreground text-sm">
                   123 Rue de la Pâtisserie<br />
                   75001 Paris, France
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-primary flex-shrink-0" />
-                <span className="text-secondary-foreground/80 text-sm">
+                <span className="text-muted-foreground text-sm">
                   +33 1 23 45 67 89
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0" />
-                <span className="text-secondary-foreground/80 text-sm">
+                <span className="text-muted-foreground text-sm">
                   contact@lesportifgourmand.fr
                 </span>
               </div>
@@ -88,8 +88,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-center">
-          <p className="text-secondary-foreground/60 text-sm">
+        <div className="border-t border-border mt-8 pt-8 text-center">
+          <p className="text-muted-foreground text-sm">
             © 2025 Le Sportif Gourmand. Tous droits réservés.
           </p>
         </div>

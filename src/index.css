@@ -17,13 +17,13 @@
     --popover: 0 0% 12%;
     --popover-foreground: 45 40% 95%;
 
-    /* Primary - Rich golden brand color */
-    --primary: 40 85% 55%;
+    /* Primary - Rich golden brand color from logo */
+    --primary: 41 45% 53%;
     --primary-foreground: 0 0% 8%;
-    --primary-glow: 42 90% 65%;
+    --primary-glow: 42 50% 63%;
 
-    /* Secondary - Elegant cream */
-    --secondary: 45 40% 95%;
+    /* Secondary - Elegant cream from logo */
+    --secondary: 42 36% 85%;
     --secondary-foreground: 0 0% 8%;
 
     /* Muted tones */
@@ -87,12 +87,12 @@
     --popover: 45 30% 96%;
     --popover-foreground: 0 0% 5%;
 
-    --primary: 40 85% 55%;
+    --primary: 41 45% 53%;
     --primary-foreground: 0 0% 8%;
-    --primary-glow: 42 90% 65%;
+    --primary-glow: 42 50% 63%;
 
     --secondary: 0 0% 8%;
-    --secondary-foreground: 45 40% 95%;
+    --secondary-foreground: 42 36% 85%;
 
     --muted: 45 20% 90%;
     --muted-foreground: 0 0% 40%;
